@@ -10,11 +10,13 @@ NAMES=(
 )
 
 TARGET_ROOT_DIR=total
+mkdir -p $TARGET_ROOT_DIR
 
 for CURR_DIR in ./*-anal; do
-	for CURR_FILE in $CURR_DIR/*; do
+	for CURR_FILE in ${NAMES[@]}; do
 		if [ -f $CURR_DIR/$CURR_FILE ]; then
 			echo "copying ${CURR_DIR}/${CURR_FILE} into ${TARGET_ROOT_DIR}/${CURR_FILE}"
+			touch ${TARGET_ROOT_DIR}/${CURR_FILE}
 			cat $CURR_DIR/$CURR_FILE >> ${TARGET_ROOT_DIR}/${CURR_FILE}
 		fi 
 	done
